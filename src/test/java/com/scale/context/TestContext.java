@@ -72,44 +72,44 @@ public class TestContext {
         if(baseURL.contains("ppd.scale")) {
             isScenarioViaCSS = false;
         }
-        if(!isScenarioViaCSS) {
-            if (!(searchedFramework.matches("\\w+\\srandom"))) {
-                browserFactory.launchURL(baseURL, searchedFramework.toLowerCase());
-            } else {
-                String frameworksName = StringUtils.getMatchedGroupByIndexFromAString(searchedFramework, "(\\w+)(\\srandom)", 1);
-                ArrayList<String> keywordsList = StringUtils.getTxtItemsAsList("\\config\\" + frameworksName + "KeywordsSets.txt");
-                int keywordIndex = StringUtils.getRandomIntNumberInRange(0, keywordsList.size() - 1);
-                randomlyPickedKeyWord = keywordsList.get(keywordIndex);
-                browserFactory.launchURL(baseURL, randomlyPickedKeyWord.toLowerCase());
-            }
-        } else {
+//        if(!isScenarioViaCSS) {
+//            if (!(searchedFramework.matches("\\w+\\srandom"))) {
+//                browserFactory.launchURL(baseURL, searchedFramework.toLowerCase());
+//            } else {
+//                String frameworksName = StringUtils.getMatchedGroupByIndexFromAString(searchedFramework, "(\\w+)(\\srandom)", 1);
+//                ArrayList<String> keywordsList = StringUtils.getTxtItemsAsList("\\config\\" + frameworksName + "KeywordsSets.txt");
+//                int keywordIndex = StringUtils.getRandomIntNumberInRange(0, keywordsList.size() - 1);
+//                randomlyPickedKeyWord = keywordsList.get(keywordIndex);
+//                browserFactory.launchURL(baseURL, randomlyPickedKeyWord.toLowerCase());
+//            }
+//        } else {
             browserFactory.launchURL(baseURL);
-        }
+//        }
     }
 
-    @After
-    public void cleanUp() throws Exception {
-        if(configReader.get("browserName").equalsIgnoreCase("chrome_profile")||configReader.get("browserName").equalsIgnoreCase("CHROME_HEADLESS"))
-        {browserFactory.deleteDirectory();}
-        takeSnapShot();
-
-        log.info("=================" + scenario.getName() + " execution ends" + "===================");
-//      eyes.closeAsync();
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
-
-        if (jsonUtilityObj != null) {
-            jsonUtilityObj = null;
-        }
-
-        if (scenarioContext != null) {
-            scenarioContext.clearContext();
-        }
-
-//      eyes.abortIfNotClosed();
-    }
+//    @After
+//    public void cleanUp() throws Exception {
+//        if(configReader.get("browserName").equalsIgnoreCase("chrome_profile")||configReader.get("browserName").equalsIgnoreCase("CHROME_HEADLESS"))
+//        {browserFactory.deleteDirectory();}
+//        takeSnapShot();
+//
+//        log.info("=================" + scenario.getName() + " execution ends" + "===================");
+////      eyes.closeAsync();
+//        if (driver != null) {
+//            driver.quit();
+//            driver = null;
+//        }
+//
+//        if (jsonUtilityObj != null) {
+//            jsonUtilityObj = null;
+//        }
+//
+//        if (scenarioContext != null) {
+//            scenarioContext.clearContext();
+//        }
+//
+////      eyes.abortIfNotClosed();
+//    }
 
     public PageObjectManager getObjectManager() {
         return objectManager;

@@ -64,19 +64,9 @@ public class BrowserFactory {
             case "CHROME_HEADLESS":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
-                // destination = actualPath + "/Library/Application Support/Google/Chrome/"+randomString(8);
-                // copyFiles(actualPath + "/Library/Application Support/Google/Chrome/profile1",destination);
-                // options.addArguments("user-data-dir=" + destination);
-//                options.addArguments("user-data-dir=" + actualPath + "/Library/Application Support/Google/Chrome");
-                options.addArguments("--no-sandbox");
                 options.addArguments("--headless");
-                options.addArguments("--ignore-ssl-errors=yes", "--ignore-certificate-errors");
-                options.setExperimentalOption("useAutomationExtension", false);
-                // options.addArguments("disable-infobars");
-                // options.addArguments("--disable-extensions");
-                // options.addArguments("--disable-gpu");
-                options.addArguments("--disable-dev-shm-usage");
-                options.addArguments("window-size=1920,1080");
+                options.addArguments("--ignore-certificate-errors");
+                options.addArguments("--ignore-ssl-errors=yes");
                 driver = new ChromeDriver(options);
                 driver.manage().window().maximize();
                 break;
@@ -89,15 +79,10 @@ public class BrowserFactory {
         return driver;
     }
 
-    public void launchURL(String url) {
-        driver.get(url);
-        log.info(url + " is launched");
-    }
-
-    public void launchURL(String url, String portalExtension) {
-        driver.get(url + portalExtension);
-        log.info(url + " is launched");
-    }
+//    public void launchURL(String url) {
+//        driver.get(url);
+//        log.info(url + " is launched");
+//    }
 
 
     public static String randomString(int count) {
@@ -120,19 +105,23 @@ public class BrowserFactory {
         }
     }
 
-    public void deleteDirectory(){
-        try {
-            if (!destination.isEmpty() || !destination.equalsIgnoreCase("")) {
-                    FileUtils.deleteDirectory(new File(destination));
-                }
-            } catch (Exception e) {
-                log.info(e.getMessage());
-            }
+//    public void deleteDirectory(){
+//        try {
+//            if (!destination.isEmpty() || !destination.equalsIgnoreCase("")) {
+//                    FileUtils.deleteDirectory(new File(destination));
+//                }
+//            } catch (Exception e) {
+//                log.info(e.getMessage());
+//            }
+//    }
+
+    public void launchURL(String url) {
+        driver.navigate().to(url);
+        log.info("Webpage launched" + url);
     }
 
 
-
-    public void launchURL() {
-        driver.get(configReader.getApplicationURL());
-    }
+//    public void launchURL() {
+//        driver.get(configReader.getApplicationURL());
+//    }
 }

@@ -115,9 +115,13 @@ public class BrowserFactory {
             }
     }
 
-
-
-    public void launchURL() {
-        driver.get(configReader.getApplicationURL());
+    public void launchURL(String url) {
+        driver.navigate().to(url);
+        log.info("Webpage launched" + url);
     }
+
+
+//    public void launchURL() {
+//        driver.get(configReader.getApplicationURL());
+//    }
 }

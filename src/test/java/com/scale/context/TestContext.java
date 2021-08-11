@@ -72,19 +72,19 @@ public class TestContext {
         if(baseURL.contains("ppd.scale")) {
             isScenarioViaCSS = false;
         }
-        if(!isScenarioViaCSS) {
-            if (!(searchedFramework.matches("\\w+\\srandom"))) {
-                browserFactory.launchURL(baseURL, searchedFramework.toLowerCase());
-            } else {
-                String frameworksName = StringUtils.getMatchedGroupByIndexFromAString(searchedFramework, "(\\w+)(\\srandom)", 1);
-                ArrayList<String> keywordsList = StringUtils.getTxtItemsAsList("\\config\\" + frameworksName + "KeywordsSets.txt");
-                int keywordIndex = StringUtils.getRandomIntNumberInRange(0, keywordsList.size() - 1);
-                randomlyPickedKeyWord = keywordsList.get(keywordIndex);
-                browserFactory.launchURL(baseURL, randomlyPickedKeyWord.toLowerCase());
-            }
-        } else {
+//        if(!isScenarioViaCSS) {
+//            if (!(searchedFramework.matches("\\w+\\srandom"))) {
+//                browserFactory.launchURL(baseURL, searchedFramework.toLowerCase());
+//            } else {
+//                String frameworksName = StringUtils.getMatchedGroupByIndexFromAString(searchedFramework, "(\\w+)(\\srandom)", 1);
+//                ArrayList<String> keywordsList = StringUtils.getTxtItemsAsList("\\config\\" + frameworksName + "KeywordsSets.txt");
+//                int keywordIndex = StringUtils.getRandomIntNumberInRange(0, keywordsList.size() - 1);
+//                randomlyPickedKeyWord = keywordsList.get(keywordIndex);
+//                browserFactory.launchURL(baseURL, randomlyPickedKeyWord.toLowerCase());
+//            }
+//        } else {
             browserFactory.launchURL(baseURL);
-        }
+//        }
     }
 
     @After

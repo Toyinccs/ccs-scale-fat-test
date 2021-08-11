@@ -87,29 +87,29 @@ public class TestContext {
 //        }
     }
 
-    @After
-    public void cleanUp() throws Exception {
-        if(configReader.get("browserName").equalsIgnoreCase("chrome_profile")||configReader.get("browserName").equalsIgnoreCase("CHROME_HEADLESS"))
-        {browserFactory.deleteDirectory();}
-        takeSnapShot();
-
-        log.info("=================" + scenario.getName() + " execution ends" + "===================");
-//      eyes.closeAsync();
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
-
-        if (jsonUtilityObj != null) {
-            jsonUtilityObj = null;
-        }
-
-        if (scenarioContext != null) {
-            scenarioContext.clearContext();
-        }
-
-//      eyes.abortIfNotClosed();
-    }
+//    @After
+//    public void cleanUp() throws Exception {
+//        if(configReader.get("browserName").equalsIgnoreCase("chrome_profile")||configReader.get("browserName").equalsIgnoreCase("CHROME_HEADLESS"))
+//        {browserFactory.deleteDirectory();}
+//        takeSnapShot();
+//
+//        log.info("=================" + scenario.getName() + " execution ends" + "===================");
+////      eyes.closeAsync();
+//        if (driver != null) {
+//            driver.quit();
+//            driver = null;
+//        }
+//
+//        if (jsonUtilityObj != null) {
+//            jsonUtilityObj = null;
+//        }
+//
+//        if (scenarioContext != null) {
+//            scenarioContext.clearContext();
+//        }
+//
+////      eyes.abortIfNotClosed();
+//    }
 
     public PageObjectManager getObjectManager() {
         return objectManager;

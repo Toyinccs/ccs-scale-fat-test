@@ -105,15 +105,15 @@ public class BrowserFactory {
         }
     }
 
-    public void deleteDirectory(){
-        try {
-            if (!destination.isEmpty() || !destination.equalsIgnoreCase("")) {
-                    FileUtils.deleteDirectory(new File(destination));
-                }
-            } catch (Exception e) {
-                log.info(e.getMessage());
-            }
-    }
+//    public void deleteDirectory(){
+//        try {
+//            if (!destination.isEmpty() || !destination.equalsIgnoreCase("")) {
+//                    FileUtils.deleteDirectory(new File(destination));
+//                }
+//            } catch (Exception e) {
+//                log.info(e.getMessage());
+//            }
+//    }
 
     public void launchURL(String url) {
         driver.navigate().to(url);

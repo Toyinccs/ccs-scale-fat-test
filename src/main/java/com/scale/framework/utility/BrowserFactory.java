@@ -79,10 +79,10 @@ public class BrowserFactory {
         return driver;
     }
 
-    public void launchURL(String url) {
-        driver.get(url);
-        log.info(url + " is launched");
-    }
+//    public void launchURL(String url) {
+//        driver.get(url);
+//        log.info(url + " is launched");
+//    }
 
 
     public static String randomString(int count) {

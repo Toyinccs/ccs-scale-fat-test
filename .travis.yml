@@ -9,4 +9,5 @@ before_install:
   - curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O
   - unzip chromedriver_linux64.zip -d ~/bin
 script:
-  - mvn install
+  - mvn install -DskipTests=false -Dmaven.javadoc.skip=false -B -V
+  - mvn test
